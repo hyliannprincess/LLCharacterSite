@@ -14,9 +14,8 @@
     bottom: 100px;
 }
 
-.video {
-    position: relative;
-    height: 100%; 
-    display: block;
-    background-color: black;
+.video-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }

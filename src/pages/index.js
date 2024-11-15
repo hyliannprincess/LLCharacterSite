@@ -5,10 +5,19 @@ import '../style/index.css'
 import YouTube from 'react-youtube';
 
 const IndexPage = () => {
+  const playlist = ["BlKZfUWN69M","r78ZX-_fDds","tNp4SzuDOtI", "5Aq72XyG34k", "eVwdeIDjXeM"]
+  const opts={
+        height: '576',
+        width: '1024',
+        playerVars:{
+          playlist: playlist,
+          rel: 0,
+        },
+      
+  }
   return (
     <main>
       <Layout>
-      
 
       <StaticImage id="banner"
         alt="cringe"
@@ -24,8 +33,10 @@ const IndexPage = () => {
       second-year student Chika Takami tries to start her own School Idol Club. <br/><br/>
         Inspired by the famous school idol group μ's before them, nine high school girls, 
         form their own idol group called Aqours.</p>
-
-      <YouTube videoId="BlKZfUWN69M" class="video"/>
+        <br/>
+      <div class="video-container">
+        <YouTube class="video" opts={opts}/>
+      </div>
 
     </Layout>
     

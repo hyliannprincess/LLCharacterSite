@@ -1,19 +1,18 @@
-
 .mainPage {
   margin-top: -8px;
   margin-left: auto;
   margin-right: auto;
-  padding-bottom: 80%;
   margin-bottom: -8px;
   max-width: 85%;
-  background-color:#FFFBFF
+  background-color:#F8C8DC
 }
 .heading {
     color: #39b184;
 }
 
 body{
-    background-color:#FEEACA
+    background-color:#FEEACA;
+    animation: 1.5s fadeInUp;
 }
 .site-title {
     font-size: 3rem;
@@ -22,7 +21,7 @@ body{
     text-align:center;
 }
 
-p{
+h4{
   font-family: sans-serif;
   font-size: 25px;
   font-weight: 500;
@@ -31,4 +30,14 @@ p{
 }
 
 
+@keyframes fadeInUp {
+  0% {
+    transform: translateY(100px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
 

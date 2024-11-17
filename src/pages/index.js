@@ -17,30 +17,39 @@ const CharacterPreview = ({ node }) => {
   });
 
   const handleOpen = () => {
-    setCharacterData({
-      name: node.name.first,
-      charDesc: node.description,
-      charImage: node.image.large,
-    });
-    setIsOpen(true);
+    if (!isOpen)
+    {
+      setCharacterData({
+        name: node.name.first,
+        charDesc: node.description,
+        charImage: node.image.large,
+      });
+      setIsOpen(true);
+    }
+    else
+    {
+      setCharacterData({
+        name: null,
+        charDesc: null,
+        charImage: null,
+      });
+      setIsOpen(false);
+    }
+    
   };
+  
 
   return (
     <div>
-      <li
-        className="character-preview"
-        id={node.name.first}
-        onClick={handleOpen}
-      >
-        <StaticImage
-          className="rounded-image character-image"
-          src="../images/characterImages/characterPlaceholder.webp"
-        />
+      <li className="character-preview" id={node.name.first}onClick={handleOpen}>
+        <img className="rounded-image character-image" src={node.image.large}/>
       </li>
       {isOpen && (
-        <div className="character-info">
-          <h2 id="character-name">{characterData.name}</h2>
-          <p id="character-desc">{characterData.charDesc}</p>
+        <div className="character-data">
+          <div className="character-info">
+            <h2 id="character-name">{characterData.name}</h2>
+            <p id="character-desc">{characterData.charDesc}</p>
+          </div>
           <img id ="character-img" src={characterData.charImage} alt={characterData.name} />
         </div>
       )}
@@ -86,15 +95,7 @@ const IndexPage = ({ data }) => {
 
       
       <div id="content">
-        <div id="character-info">
-            <h2 id="character-name">Johnhane</h2>
-            <p id="character-desc">a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a </p>
-        </div>
-
-      <div id="character-img-container">
-        <StaticImage id="character-img" src="../images/characterImages/chikaPreview.webp"/>
-      </div>
-
+        <h1>Idols</h1>
         <ul id="character-list">
           {
             data.Anilist.Media.characters.nodes.map((node) => (
@@ -107,16 +108,17 @@ const IndexPage = ({ data }) => {
 
         <div class="scrolling-image"></div>
 
+        <h1>Seiyuu</h1>
         <ul id="seiyuu-list">
           {
             data.Anilist.Media.staff.nodes.map((node) => (
-              <li class="seiyuu-preview" id={node.name.first}><h2>{node.name.full}</h2><StaticImage class="rounded-image" src="../images/seiyuuImages/aikaKobayashi.webp"/><h3>Yoshiko Tsushima</h3></li>
+              <li class="seiyuu-preview" id={node.name.first}><h2>{node.name.full}</h2><img class="rounded-image" src={node.image.large}/><h3>Voice Actress</h3></li>
             ))
           }
         </ul>
         
         <div id="footer">
-          <button class="bttn">More Info</button>
+          <button class="bttn">Button</button>
         </div>
 
     </div>
@@ -152,12 +154,15 @@ export const query = graphql`
             description 
           }
         }
-        staff(page: 1, perPage: 9) {
+        staff(page: 1, perPage: 9, sort: ROLE_DESC) {
           nodes {
             name {
               first
               full
               native
+            }
+            image {
+              large
             }
           }
         }
@@ -165,70 +170,6 @@ export const query = graphql`
     }
   }
 `
-
-const characters = [
-  {
-      name: "John",
-      charPreview: "../images/characterImages/characterPlaceholder.webp",
-      charImage: "../images/characterImages/characterPlaceholder.webp",
-      charDesc: "Yoshiko Tsushima, also known as Yohane, is a main character in Love Live! Sunshine!!. She is a first year student at Uranohoshi Girls' High School. She is a member of Guilty Kiss and YYY, two sub-units under Aqours. Her image color is white, though she is also represented with gray, black or blue-gray."
-  },
-  {
-      name: "John",
-      charPreview: "../images/characterImages/characterPlaceholder.webp",
-      charImage: "../images/characterImages/characterPlaceholder.webp",
-      charDesc: "Yoshiko Tsushima, also known as Yohane, is a main character in Love Live! Sunshine!!. She is a first year student at Uranohoshi Girls' High School. She is a member of Guilty Kiss and YYY, two sub-units under Aqours. Her image color is white, though she is also represented with gray, black or blue-gray."
-  },
-  {
-      name: "John",
-      charPreview: "../images/characterImages/characterPlaceholder.webp",
-      charImage: "../images/characterImages/characterPlaceholder.webp",
-      charDesc: "Yoshiko Tsushima, also known as Yohane, is a main character in Love Live! Sunshine!!. She is a first year student at Uranohoshi Girls' High School. She is a member of Guilty Kiss and YYY, two sub-units under Aqours. Her image color is white, though she is also represented with gray, black or blue-gray."
-  },
-  {
-      name: "John",
-      charPreview: "../images/characterImages/characterPlaceholder.webp",
-      charImage: "../images/characterImages/characterPlaceholder.webp",
-      charDesc: "Yoshiko Tsushima, also known as Yohane, is a main character in Love Live! Sunshine!!. She is a first year student at Uranohoshi Girls' High School. She is a member of Guilty Kiss and YYY, two sub-units under Aqours. Her image color is white, though she is also represented with gray, black or blue-gray."
-  },
-  {
-      name: "John",
-      charPreview: "../images/characterImages/characterPlaceholder.webp",
-      charImage: "../images/characterImages/characterPlaceholder.webp",
-      charDesc: "Yoshiko Tsushima, also known as Yohane, is a main character in Love Live! Sunshine!!. She is a first year student at Uranohoshi Girls' High School. She is a member of Guilty Kiss and YYY, two sub-units under Aqours. Her image color is white, though she is also represented with gray, black or blue-gray."
-  },
-  {
-      name: "John",
-      charPreview: "../images/characterImages/characterPlaceholder.webp",
-      charImage: "../images/characterImages/characterPlaceholder.webp",
-      charDesc: "Yoshiko Tsushima, also known as Yohane, is a main character in Love Live! Sunshine!!. She is a first year student at Uranohoshi Girls' High School. She is a member of Guilty Kiss and YYY, two sub-units under Aqours. Her image color is white, though she is also represented with gray, black or blue-gray."
-  },
-  {
-      name: "John",
-      charPreview: "../images/characterImages/characterPlaceholder.webp",
-      charImage: "../images/characterImages/characterPlaceholder.webp",
-      charDesc: "Yoshiko Tsushima, also known as Yohane, is a main character in Love Live! Sunshine!!. She is a first year student at Uranohoshi Girls' High School. She is a member of Guilty Kiss and YYY, two sub-units under Aqours. Her image color is white, though she is also represented with gray, black or blue-gray."
-  },
-  {
-      name: "John",
-      charPreview: "../images/characterImages/characterPlaceholder.webp",
-      charImage: "../images/characterImages/characterPlaceholder.webp",
-      charDesc: "Yoshiko Tsushima, also known as Yohane, is a main character in Love Live! Sunshine!!. She is a first year student at Uranohoshi Girls' High School. She is a member of Guilty Kiss and YYY, two sub-units under Aqours. Her image color is white, though she is also represented with gray, black or blue-gray."
-  },
-  {
-      name: "John",
-      charPreview: "../images/characterImages/characterPlaceholder.webp",
-      charImage: "../images/characterImages/characterPlaceholder.webp",
-      charDesc: "Yoshiko Tsushima, also known as Yohane, is a main character in Love Live! Sunshine!!. She is a first year student at Uranohoshi Girls' High School. She is a member of Guilty Kiss and YYY, two sub-units under Aqours. Her image color is white, though she is also represented with gray, black or blue-gray."
-  },
-  {
-      name: "John",
-      charPreview: "../images/characterImages/characterPlaceholder.webp",
-      charImage: "../images/characterImages/characterPlaceholder.webp",
-      charDesc: "Yoshiko Tsushima, also known as Yohane, is a main character in Love Live! Sunshine!!. She is a first year student at Uranohoshi Girls' High School. She is a member of Guilty Kiss and YYY, two sub-units under Aqours. Her image color is white, though she is also represented with gray, black or blue-gray."
-  },
-]
-
 
 export default IndexPage
 

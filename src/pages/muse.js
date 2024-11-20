@@ -1,6 +1,13 @@
 import * as React from "react"
 import Layout from '../components/layout'
-import '../css/muse.module.css'
+import {
+  specialBorder,
+  dataDisplacement,
+  pageBackground,
+  scrollingBackground,
+  pageColor,
+  footerColor,
+} from '../css/muse.module.css'
 import { graphql } from 'gatsby'
 
 
@@ -17,10 +24,19 @@ const MusePage = ({ data }) => {
   }
   const characters = data.Anilist.MediaCharacters.characters.nodes
   const staff = data.Anilist.MediaStaff.staff.nodes
-  const summary = "<h4>At Uranohoshi Girls' High School, a private school in the seaside neighborhood of Uchiura at Numazu City,<br/><br/>second-year student Chika Takami tries to start her own School Idol Club. <br/><br/>Inspired by the famous school idol group μ's before them, nine high school girls, form their own idol group called Aqours.</h4><br/>"
+  const summary = "<h4>The story is set in Tokyo, where an old school right in between the neighborhoods of<br/>Akihabara, Kanda and Jinbocho is in danger of consolidation and closure.<br/><br/>Nine girls have stepped up<br/>to defy the imminent danger facing their school.<br/><br/>“If we want to protect our beloved school, we need to do what we can?<br/>we need to become idols!”<br/>Hoping against hope there’s something they can do about this,<br/>the girls strive to become famous,<br/>spread the word about their school, attract more students, and save the day.<br/><br/>Now their “School Idol Project” begins to make their dreams come true!<br/>“Make our dreams come true!”</h4><br/>"
+  const museStyle =
+  {
+    specialBorder: specialBorder,
+    dataDisplacement: dataDisplacement,
+    pageBackground: pageBackground,
+    scrollingBackground: scrollingBackground,
+    pageColor: pageColor,
+    footerColor: footerColor,
+  }
   return (
     <main>
-    <Layout opts={pageOpts} data={data} characters={characters} staff={staff} summary={summary}>
+    <Layout opts={pageOpts} data={data} characters={characters} staff={staff} summary={summary} pageStyle={museStyle}>
 
 
     </Layout>
@@ -81,11 +97,6 @@ export const query = graphql`
       }
     }
     banner: file(relativePath: {eq: "muse.jpg"}) {
-      childImageSharp {
-        gatsbyImageData
-      }
-    }
-    scroll: file(relativePath: {eq: "museScroll.png"}) {
       childImageSharp {
         gatsbyImageData
       }

@@ -1,0 +1,66 @@
+body{
+    font-family: 'headingFont';
+    background-color:#ffedfe;
+}
+
+/* Logo */
+.logo{
+    display: block;
+    margin-left: 500px;
+    margin-right: 500px;
+    animation: 1.5s fadeInUp;
+}
+
+/* Series */
+.series-list{
+    padding: 300px;
+    padding-top: 100px;
+    align-items: center;
+    justify-content: center;
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(4, 420px);
+    animation: 2s fadeInUp;
+}
+.series-image{
+    width:350px;
+    height:350px;
+    transition: .5;
+}
+.series-image:hover{
+    opacity:.5;
+    transition-duration: .5s;
+}
+
+/* Borders */
+.muse-border{
+    border: 5px double #E50080;
+}
+.aqours-border{
+    border: 5px double #19B1F6;
+}
+.liella-border{
+    border: 5px double #A3469D;
+}
+.nijigasaki-border{
+    border: 5px double #F39800;
+}
+
+/* Utility */
+.rounded-image {
+    border-radius: 50%
+}
+
+/*Animations*/
+@keyframes fadeInUp {
+    0% {
+      transform: translateY(100px);
+      opacity: 0;
+    }
+    100% {
+      transform: translateY(0);
+      opacity: 1;
+    }
+}
+  
+  

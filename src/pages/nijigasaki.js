@@ -1,6 +1,13 @@
 import * as React from "react"
 import Layout from '../components/layout'
-import '../css/nijigasaki.css'
+import {
+  specialBorder,
+  dataDisplacement,
+  pageBackground,
+  scrollingBackground,
+  pageColor,
+  footerColor,
+} from '../css/nijigasaki.module.css'
 import { graphql } from 'gatsby'
 
 
@@ -17,12 +24,21 @@ const NijigasakiPage = ({ data }) => {
   }
   const characters = data.Anilist.MediaCharacters.characters.nodes
   const staff = data.Anilist.MediaStaff.staff.nodes
-  const summary = "<h4>At Uranohoshi Girls' High School, a private school in the seaside neighborhood of Uchiura at Numazu City,<br/><br/>second-year student Chika Takami tries to start her own School Idol Club. <br/><br/>Inspired by the famous school idol group μ's before them, nine high school girls, form their own idol group called Aqours.</h4><br/>"
+  const summary = "<h4>Nijigasaki High School, located on the island of Odaiba in Tokyo, is popular for its variety of class subjects and the freedom given to students.<br/><br/>Second-year student Yu Takasaki has been turned on to the charms of school idols, so she knocks on the door of the “School Idol Club” with her old friend Ayumu Uehara.<br/><br/>Sometimes friends, sometimes rivals, the members of this club each bring their own thoughts and motivations to their lives.<br/><br/>“If I can cheer on people who're pursuing their dreams…”<br/><br/>“The first School Idol Project featuring twelve girls (plus one) where everyone comes together to make dreams come true.”<br/><br/>“Let my sound reach you!”<br/><br/>It's time to chase after your dreams again!</h4><br/>"
   const cutStaff = staff.slice(1);
+  const nijiStyle =
+  {
+    specialBorder: specialBorder,
+    dataDisplacement: dataDisplacement,
+    pageBackground: pageBackground,
+    scrollingBackground: scrollingBackground,
+    pageColor: pageColor,
+    footerColor: footerColor,
+  }
   return (
     <main>
 
-    <Layout opts={pageOpts} data={data} characters={characters} staff={cutStaff} summary={summary}>
+    <Layout opts={pageOpts} data={data} characters={characters} staff={cutStaff} summary={summary} pageStyle={nijiStyle}>
 
 
     </Layout>
@@ -83,11 +99,6 @@ export const query = graphql`
       }
     }
     banner: file(relativePath: {eq: "niji.jpg"}) {
-      childImageSharp {
-        gatsbyImageData
-      }
-    }
-    scroll: file(relativePath: {eq: "nijiScroll.png"}) {
       childImageSharp {
         gatsbyImageData
       }

@@ -1,2 +1,2 @@
 # LLCharacterSite
- Love Live! Nijigasaki character site created using GatsbyJS
+ Love Live! fan site created using GatsbyJS, connects to Anilist API

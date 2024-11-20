@@ -16,9 +16,9 @@
 .character-data
 {
     position: absolute;
-    left: 840px;
-    top: 2650px;
-    right: 650px;
+    left: 820px;
+    top: 2500px;
+    right: 200px;
     animation: 1.5s fadeInUp;
 }
 

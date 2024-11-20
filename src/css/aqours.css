@@ -2,6 +2,7 @@
 #character-img
 {
     border: 5px double #19B1F6 !important;
+    left: 570px;
 }
 
 .character-image{
@@ -17,7 +18,7 @@
     position: absolute;
     left: 840px;
     top: 2650px;
-    right: 650px;
+    right: 300px;
     animation: 1.5s fadeInUp;
 }
 

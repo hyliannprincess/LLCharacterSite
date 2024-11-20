@@ -1,6 +1,13 @@
 import * as React from "react"
 import Layout from '../components/layout'
-import '../css/liella.module.css'
+import {
+  specialBorder,
+  dataDisplacement,
+  pageBackground,
+  scrollingBackground,
+  pageColor,
+  footerColor,
+} from '../css/liella.module.css'
 import { graphql } from 'gatsby'
 
 
@@ -17,12 +24,21 @@ const LiellaPage = ({ data }) => {
   }
   const characters = data.Anilist.MediaCharacters.characters.nodes
   const staff = data.Anilist.MediaStaff.staff.nodes
-  const summary = "<h4>At Uranohoshi Girls' High School, a private school in the seaside neighborhood of Uchiura at Numazu City,<br/><br/>second-year student Chika Takami tries to start her own School Idol Club. <br/><br/>Inspired by the famous school idol group μ's before them, nine high school girls, form their own idol group called Aqours.</h4><br/>"
+  const summary = "<h4>The first students have arrived at Yuigaoka Girls’ High School, a new academy built on the crossroads of three Tokyo neighborhoods－Omotesando, Harajuku, and Aoyama.<br/><br/>With no history, no upperclassmen to rely on, and no name to speak of, this school’s totally starting from scratch!<br/>In the midst of this, a team of five girls led by Kanon Shibuya discover “school idols.”<br/><br/>－I love singing! I really do! And I want to accomplish something with it!<br/><br/>So the hopes of these stars, still small in stature, begin to accumulate…and so begins the “School Idol Project” of five girls with a blank slate and infinite potential.<br/><br/>Time for our Love Live to take flight!</h4><br/>"
   const cutStaff = staff.slice(3);
+  const liellaStyle =
+  {
+    specialBorder: specialBorder,
+    dataDisplacement: dataDisplacement,
+    pageBackground: pageBackground,
+    scrollingBackground: scrollingBackground,
+    pageColor: pageColor,
+    footerColor: footerColor,
+  }
   return (
     <main>
 
-    <Layout opts={pageOpts} data={data} characters={characters} staff={cutStaff} summary={summary}>
+    <Layout opts={pageOpts} data={data} characters={characters} staff={cutStaff} summary={summary} pageStyle={liellaStyle}>
 
 
     </Layout>
@@ -87,14 +103,9 @@ export const query = graphql`
         gatsbyImageData
       }
     }
-    scroll: file(relativePath: {eq: "liellaScroll.png"}) {
-      childImageSharp {
-        gatsbyImageData
-      }
-    }
   }
 `
 
 export default LiellaPage
 
-export const Head = () => <title>Leilla</title>
+export const Head = () => <title>Liella</title>

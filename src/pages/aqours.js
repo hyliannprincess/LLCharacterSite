@@ -1,6 +1,13 @@
 import * as React from "react"
 import Layout from '../components/layout'
-import '../css/aqours.css'
+import {
+  specialBorder,
+  dataDisplacement,
+  pageBackground,
+  scrollingBackground,
+  pageColor,
+  footerColor,
+} from '../css/aqours.module.css'
 import { graphql } from 'gatsby'
 
 
@@ -17,10 +24,19 @@ const AqoursPage = ({ data }) => {
   }
   const characters = data.Anilist.MediaCharacters.characters.nodes
   const staff = data.Anilist.MediaStaff.staff.nodes
-  const summary = "<h4>At Uranohoshi Girls' High School, a private school in the seaside neighborhood of Uchiura at Numazu City,<br/><br/>second-year student Chika Takami tries to start her own School Idol Club. <br/><br/>Inspired by the famous school idol group μ's before them, nine high school girls, form their own idol group called Aqours.</h4><br/>"
+  const summary = "<h4>Uranohoshi Girls’ High School, a private school in the seaside neighborhood of Uchiura at Numazu city, Shizuoka prefecture.<br/><br/>A small high school in a corner of Suruga Bay, it is home to nine teens,<br/>led by second-year student Chika Takami, driven by one seriously big dream:<br/><br/>To become the next generation of bright, sparkling “school idols”!<br/><br/>As long as we don’t give up, any dream can come true...<br/>All we have to do now is keep pushing hard for glory!<br/><br/>Now their “School Idol Project” begins to make their dreams come true!<br/></h4><br/>"
+  const aqoursStyle =
+  {
+    specialBorder: specialBorder,
+    dataDisplacement: dataDisplacement,
+    pageBackground: pageBackground,
+    scrollingBackground: scrollingBackground,
+    pageColor: pageColor,
+    footerColor: footerColor,
+  }
   return (
     <main>
-    <Layout opts={pageOpts} data={data} characters={characters} staff={staff} summary={summary}>
+    <Layout opts={pageOpts} data={data} characters={characters} staff={staff} summary={summary} pageStyle={aqoursStyle}>
 
 
     </Layout>
@@ -81,11 +97,6 @@ export const query = graphql`
       }
     }
     banner: file(relativePath: {eq: "aqours.jpg"}) {
-      childImageSharp {
-        gatsbyImageData
-      }
-    }
-    scroll: file(relativePath: {eq: "aqoursScroll.png"}) {
       childImageSharp {
         gatsbyImageData
       }

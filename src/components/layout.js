@@ -1,38 +1,44 @@
 import { useState } from "react"
 import * as React from 'react'
 import {
+  webpage,
   mainPage,
+  banner,
+  logo,
+  seriesDesc,
+  videoContainer,
+  video,
+  characterList,
+  characterPreview,
+  characterImage,
+  characterData,
+  characterInfo,
+  characterName,
+  characterDesc,
+  characterImg,
+  seiyuuPreview,
+  seiyuuList,
+  seiyuuImage,
+  footer,
+  seriesList,
+  seriesImage,
+  seriesPreview,
+  museBorder,
+  aqoursBorder,
+  nijigasakiBorder,
+  liellaBorder,
+  roundedImage,
+  scrollingImage,
 } from './layout.module.css'
-import './layout.css'
 import { GatsbyImage,StaticImage} from 'gatsby-plugin-image';
 import YouTube from 'react-youtube'
 import {Link} from 'gatsby'
 
-export const onRenderBody = ({ setHeadComponents }) => {
-  setHeadComponents([
-    <link
-      key="headingFont"
-      rel="preload"
-      href="../fonts/headingFont.ttf"
-      as="font"
-      type="font/ttf"
-      crossOrigin="anonymous"
-    />,
-    <link
-      key="paragraphFont"
-      rel="preload"
-      href="../fonts/paragraphFont.TTF"
-      as="font"
-      type="font/TTF"
-      crossOrigin="anonymous"
-    />,
-  ]);
-};
 const characterStateArray = []
-const CharacterPreview = ({ node }) => {
+const CharacterPreview = ({ node, pageStyle }) => {
   const [isOpen, setIsOpen] = useState(false);
   characterStateArray.push(setIsOpen)
-  const [characterData, setCharacterData] = useState({
+  const [charData, setCharData] = useState({
     name: "",
     charDesc: "",
     charImage: "",
@@ -40,7 +46,7 @@ const CharacterPreview = ({ node }) => {
   const handleOpen = () => {
     if (!isOpen)
     {
-      setCharacterData({
+      setCharData({
         name: node.name.full,
         charDesc: node.description,
         charImage: node.image.large,
@@ -50,7 +56,7 @@ const CharacterPreview = ({ node }) => {
     }
     else
     {
-      setCharacterData({
+      setCharData({
         name: null,
         charDesc: null,
         charImage: null,
@@ -64,85 +70,82 @@ const CharacterPreview = ({ node }) => {
 
   return (
     <div>
-      <li className="character-preview" id={node.name.first}onClick={handleOpen}>
-        <img className="rounded-image character-image" src={node.image.large}/>
+      <li className={characterPreview} onClick={handleOpen}>
+        <img className={`${characterImage} ${roundedImage} ${pageStyle.specialBorder}`} src={node.image.large}/>
       </li>
       {isOpen && (
-        <div className="character-data">
-          <div className="character-info">
-            <h2 id="character-name">{characterData.name}</h2>
-            <div id="character-desc" dangerouslySetInnerHTML={{ __html: characterData.charDesc }}/>
+        <div className={`${characterData} ${pageStyle.dataDisplacement}`}>
+          <div className={characterInfo}>
+            <h2 className={characterName}>{charData.name}</h2>
+            <div className={characterDesc} dangerouslySetInnerHTML={{ __html: charData.charDesc }}/>
           </div>
-          <img id ="character-img" src={characterData.charImage} alt={characterData.name} />
+          <img className ={`${characterImg} ${pageStyle.specialBorder}`} src={charData.charImage} alt={charData.name} />
         </div>
       )}
     </div>
   );
 };
 
-const Layout = ({ pageTitle, children, opts, data, characters, staff, summary}) => {
+const Layout = ({ pageTitle, children, opts, data, characters, staff, summary, pageStyle}) => {
     return (
-        <div className={mainPage}>
+      <div className={`${webpage} ${pageStyle.pageBackground}`}>
+        <div className={`${mainPage} ${pageStyle.pageColor}`}>
         <main>
-          <GatsbyImage id="banner"
+          <GatsbyImage className={banner}
             image={data.banner.childImageSharp.gatsbyImageData}
             alt="Banner"
           />
-          <GatsbyImage class="logo"
+          <GatsbyImage className={logo}
             image={data.showLogo.childImageSharp.gatsbyImageData}
             alt="Show Logo"
           />
 
-          <div id="series-desc" dangerouslySetInnerHTML={{ __html: summary }}/>
+          <div className={seriesDesc} dangerouslySetInnerHTML={{ __html: summary }}/>
 
-          <div class="video-container">
-            <YouTube class="video" opts={opts}/>
+          <div className={videoContainer}>
+            <YouTube className={video} opts={opts}/>
           </div>
-          <GatsbyImage class="logo"
+          <GatsbyImage className={logo}
             image={data.groupLogo.childImageSharp.gatsbyImageData}
             alt="Group Logo"
           />
 
-          <ul id="character-list">
+          <ul className={characterList}>
             {
               characters.map((node) => (
-                <CharacterPreview key={node.id} node={node} />
+                <CharacterPreview key={node.id} node={node} pageStyle={pageStyle}/>
               ))
             }
           </ul>
-          <div className="scrolling-image">
-            <GatsbyImage
-            image={data.scroll.childImageSharp.gatsbyImageData}
-            />
-          </div>
-          <ul id="seiyuu-list">
+          <div className={`${scrollingImage} ${pageStyle.scrollingBackground}`}></div>
+          <ul className={seiyuuList}>
             {
               staff.map((node) => (
-                <li class="seiyuu-preview" id={node.name.first}><h2>{node.name.full}</h2><img class="rounded-image seiyuu-image" src={node.image.large}/><h3>{node.primaryOccupations[0]}</h3></li>
+                <li className={seiyuuPreview}><h2>{node.name.full}</h2><img className={`${seiyuuImage} ${roundedImage} ${pageStyle.specialBorder}`}src={node.image.large}/><h3>{node.primaryOccupations[0]}</h3></li>
               ))
             }
           </ul>
-          <div id="footer">
-            <ul id="series-list">
-                <li class="series-preview" id="sip">
+          <div className={`${footer} ${pageStyle.footerColor}`}>
+            <ul className={seriesList}>
+                <li className={seriesPreview}>
                   <Link to ='/muse'>
-                    <StaticImage class="rounded-image series-image" src="../images/muse.jpg"/>
+                    <StaticImage className={`${seriesImage} ${roundedImage} ${museBorder}`} src="../images/muse.jpg"/>
                   </Link>
                 </li>
 
-                <li class="series-preview" id="sunshine">
+                <li className={seriesPreview}>
                   <Link to ='/aqours'>
-                    <StaticImage class="rounded-image series-image" src="../images/aqours.jpg"/>
+                    <StaticImage className={`${seriesImage} ${roundedImage} ${aqoursBorder}`} src="../images/aqours.jpg"/>
                   </Link>
                 </li>
-                <li class="series-preview" id="nijigasaki">
+                <li className={seriesPreview}>
                   <Link to ='/nijigasaki'>
-                    <StaticImage class="rounded-image series-image" src="../images/niji.jpg"/>
+                    <StaticImage className={`${seriesImage} ${roundedImage} ${nijigasakiBorder}`} src="../images/niji.jpg"/>
                   </Link>
                 </li>
-                <li class="series-preview" id="superstar">
+                <li className={seriesPreview}>
                   <Link to ='/liella'>
-                    <StaticImage class="rounded-image series-image" src="../images/liella.jpg"/>
+                    <StaticImage className={`${seriesImage} ${roundedImage} ${liellaBorder}`} src="../images/liella.jpg"/>
                   </Link>
                 </li>
             </ul>
@@ -151,6 +154,7 @@ const Layout = ({ pageTitle, children, opts, data, characters, staff, summary}) 
           {children}
         </main>
         </div>
+      </div>
     )
 }
 

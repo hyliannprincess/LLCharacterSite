@@ -1,31 +1,31 @@
 /*Site*/
 .page-background{
-    background-color:#9e4c99;
+    background-color:#53baea;
 }
 .page-color{
-    background-color:#e1abc8;
+    background-color:#cbe1d8;
 }
 
 /*Character*/
 .special-border{
-    border: 5px double #A3469D;
+    border: 5px double #19B1F6;
 }
 .data-displacement{
-    top: 2600px;
+    top: 2650px;
 }
 
 /*Footer*/
 .footer-color{
-    background-color:#794085;
+    background-color:#4688ce;
 }
 /*Utility*/
 .scrolling-background {
-    background-image: url('../images/liellaScroll.png');
+    background-image: url('../images/aqoursScroll.png');
     animation: scroll 20s linear infinite;
 }
 
 /*Animation*/
 @keyframes scroll {
     0% { background-position: 0 0; }
-    100% { background-position: -1826px 0; } 
+    100% { background-position: -1494px 0; } 
 }

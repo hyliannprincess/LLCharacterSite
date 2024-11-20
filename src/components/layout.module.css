@@ -1,3 +1,4 @@
+/*Site*/
 .mainPage {
   margin-top: -8px;
   margin-left: auto;
@@ -6,20 +7,12 @@
   max-width: 85%;
   background-color:#F8C8DC
 }
-.heading {
-    color: #39b184;
+body{
+  background-color:#FEEACA;
+  animation: 1.5s fadeInUp;
 }
 
-body{
-    background-color:#FEEACA;
-    animation: 1.5s fadeInUp;
-}
-.site-title {
-    font-size: 3rem;
-    color: #F39800;
-    font-weight: 700;
-    text-align:center;
-}
+
 
 h4{
   font-family: sans-serif;
@@ -28,15 +21,6 @@ h4{
   padding-top:55px;
   text-align: center;
 }
-
-h1{
-  font-family: sans-serif;
-  font-size: 50px;
-  font-weight: 500;
-  padding-top:55px;
-  text-align: center;
-}
-
 
 @keyframes fadeInUp {
   0% {

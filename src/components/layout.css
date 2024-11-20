@@ -1,0 +1,73 @@
+/*Fonts*/
+
+
+/*Header*/
+#banner{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+}
+  
+.logo{
+    display:flex;
+    margin-left: auto;
+    margin-right: auto;
+    width: 35%;
+    top: 35px;
+    margin-bottom: 70px;
+}
+
+/*Video*/
+.video-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 50px;
+}
+
+/*Character*/
+#character-list
+{
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(3, 200px);
+    justify-content: start;
+}
+.character-preview{
+    margin-bottom: 30px;
+}
+.character-image:hover{
+    opacity:.5;
+}
+
+#character-img{
+    position: absolute;
+    left: 450px;
+    top: 0px;
+}
+
+
+/*Footer*/
+#footer{
+    padding-bottom: 50px;
+}
+#series-list{
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(4, 402px);
+    justify-content: start;
+}
+.series-image{
+    width:250px;
+    height:250px;
+    transition: .5;
+}
+.series-image:hover{
+    opacity:.5;
+    transition-duration: .5s;
+}
+.series-preview{
+    margin-top: 40px;
+}
+

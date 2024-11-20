@@ -1,0 +1,82 @@
+
+#character-img
+{
+    border: 5px double #37ff00;
+}
+
+.character-image{
+    transition: .5s;
+    cursor:pointer;
+    width: 150px; 
+    height: 150px; 
+    object-fit: cover;
+}
+
+.character-data
+{
+    position: absolute;
+    left: 840px;
+    top: 2650px;
+    right: 650px;
+    animation: 1.5s fadeInUp;
+}
+
+/*Seiyuu*/
+#seiyuu-list
+{
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(3, auto);
+    justify-content: start;
+    margin-bottom: 200px;
+}
+
+#seiyuu-list > li {
+    margin-left: 7.8em;
+    margin-bottom: 1em;
+    width: 100%;
+    text-align: center;
+}
+
+.seiyuu-image {
+    width: 300px; 
+    height: 300px; 
+    object-fit: cover;
+}
+
+/*Utility*/
+.rounded-image {
+    border-radius: 50%;
+    border: 5px double #FFFFFF;
+}
+
+#footer{
+    width:100%;
+    height:300px;
+    background-color: #00A1E9;
+}
+.bttn{
+    border-radius: 6px;
+    font-size: 18px;
+    padding: 16px 18px;
+    cursor:pointer;
+}
+.bttn:hover{
+    transition-duration: .5s;
+    background-color: #00A1E9;
+}
+
+
+
+/*Animation*/
+@keyframes fadeInUp {
+    0% {
+      transform: translateY(100px);
+      opacity: 0;
+    }
+    100% {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+  
